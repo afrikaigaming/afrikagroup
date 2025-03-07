@@ -215,37 +215,43 @@
         color: #eaeaea;
     }
 
-    .job-cards {
+    .container-2{
         display: flex;
         flex-wrap: wrap;
-        gap: 20px;
-        justify-content: center;
+        justify-content: space-around;
     }
 
     .job-card {
-        background-color: #2a2a2a;
-        border: 1px solid #333;
-        border-radius: 5px;
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
         padding: 20px;
-        width: 300px;
-        text-align: center;
-        transition: transform 0.3s ease;
+        border-radius: 8px;
+        width: 30%;
+        border-color: #f9a202;
+        border-style: solid;
+        border-radius: 12px;
     }
 
-    .job-card:hover {
-        transform: translateY(-10px);
+
+    .job-card ul {
+        padding-left: 20px;
     }
 
-    .job-card h3 {
-        font-size: 20px;
-        margin-bottom: 10px;
-        color: #eaeaea;
+    @media (max-width: 600px) {
+        .container {
+            padding: 10px;
+        }
+
+        .job-card {
+            padding: 15px;
+            width: 90%;
+            border-color: #f9a202;
+            border-style: solid;
+            border-radius: 12px;
+        }
     }
 
-    .job-card p {
-        font-size: 16px;
-        color: #ccc;
-    }
+    
 
     /* Footer */
     footer {
@@ -353,8 +359,55 @@
         <section class="job-listings" id="jobListings">
             <div class="container">
                 <h2>Open Positions</h2>
-                <div class="job-cards center-text">
-                    At the moment, we don’t have any open positions, but we’re always on the lookout for great talent. Feel free to check back later or send us your resume at <a href="mailto:contact@afrikagroup.io" style="color:white">contact@afrikagroup.io</a>so we can keep you in mind for future opportunities.
+            </div>
+            <div class="container-2">
+                <div class="job-card">
+                    <h5 style="color: #f9a202;text-align: center;">Data Engineer</h5>
+                    <h6 style="margin: 20px 0px;">Description:</h6>
+                    <p>A Data Engineer is responsible for building and maintaining the infrastructure that allows organizations to access and utilize data effectively. This involves designing, developing, and testing data pipelines, data warehouses, and other data systems. They ensure data quality, reliability, and accessibility for data scientists, analysts, and other stakeholders.</p>
+                    <h6 style="margin: 20px 0px;">Requirements/Qualifications:</h6>
+                    <ul>
+                        <li>Bachelor's degree in Computer Science, Information Technology, or a related field.</li>
+                        <li>Proficiency in programming languages such as Python, Java, or Scala.</li>
+                        <li>Strong knowledge of SQL and database systems.</li>
+                        <li>Experience with ETL tools and data warehousing concepts.</li>
+                        <li>Familiarity with big data technologies like Hadoop, Spark, and Kafka.</li>
+                        <li>Experience with cloud platforms such as AWS, Azure, or Google Cloud.</li>
+                        <li>Strong problem-solving and analytical skills.</li>
+                        <li>Strong understanding of data modelling.</li>
+                    </ul>
+                </div>
+        
+                <div class="job-card">
+                    <h5 style="color: #f9a202;text-align: center;">Journalist/Presenter</h5>
+                    <h6 style="margin: 20px 0px;">Description:</h6>
+                    <p>A Journalist/Presenter is responsible for researching, writing, and delivering news and information to the public. This involves gathering information from various sources, conducting interviews, and presenting stories in a clear and engaging manner.</p>
+                    <h6 style="margin: 20px 0px;">Requirements/Qualifications:</h6>
+                    <ul>
+                        <li>Bachelor's degree in Journalism, Communications, or a related field.</li>
+                        <li>Excellent writing and communication skills.</li>
+                        <li>Strong research and interviewing skills.</li>
+                        <li>Ability to present information clearly and engagingly.</li>
+                        <li>Knowledge of current events and news trends.</li>
+                        <li>Ability to work under tight deadlines.</li>
+                        <li>Experience with on camera presentation.</li>
+                    </ul>
+                </div>
+        
+                <div class="job-card">
+                    <h5 style="color: #f9a202;text-align: center;">Graphic Designer</h5>
+                    <h6 style="margin: 20px 0px;">Description:</h6>
+                    <p>A Graphic Designer is responsible for creating visual concepts that communicate ideas and messages. This involves designing logos, brochures, websites, and other marketing materials.</p>
+                    <h6 style="margin: 20px 0px;">Requirements/Qualifications:</h6>
+                    <ul>
+                        <li>Bachelor's degree in Graphic Design or a related field.</li>
+                        <li>Proficiency in graphic design software such as Adobe Photoshop, Illustrator, and InDesign.</li>
+                        <li>Strong understanding of design principles and typography.</li>
+                        <li>Excellent visual communication skills.</li>
+                        <li>Ability to work independently and as part of a team.</li>
+                        <li>Strong attention to detail.</li>
+                        <li>A strong portfolio of previous design work.</li>
+                    </ul>
                 </div>
             </div>
         </section>
