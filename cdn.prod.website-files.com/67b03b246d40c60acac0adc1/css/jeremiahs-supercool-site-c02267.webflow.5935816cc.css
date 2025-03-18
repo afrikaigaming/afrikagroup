@@ -2659,12 +2659,9 @@ blockquote {
 }
 
 .logo-wrap {
-  background-color: #ffffff0d;
-  border-radius: 16px;
+  margin: 20px 0px;
   justify-content: center;
   align-items: center;
-  height: 160px;
-  padding: 32px;
   display: flex;
 }
 
