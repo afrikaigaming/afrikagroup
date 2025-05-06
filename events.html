@@ -206,6 +206,617 @@
     }
 </style>
 
+<style>
+    .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: #333;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #f9a202;
+        }
+        
+        .slider-container {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .slide {
+            min-width: 100%;
+            position: relative;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 1rem;
+        }
+        
+        .slide-caption h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .navigation-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #333;
+            border: none;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        
+        .navigation-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .prev {
+            left: 20px;
+        }
+        
+        .next {
+            right: 20px;
+        }
+        
+        /* Dots navigation */
+        .dots-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .dot.active {
+            background-color: #f9a202;
+        }
+        
+        /* Event Highlights Section */
+        .event-highlights {
+            margin-top: 3rem;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .highlights-intro {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .highlights-intro h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .highlights-intro p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+        }
+        
+        .key-takeaways {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .takeaway-card {
+            background-color: #f9f9f9;
+            border-left: 4px solid #f9a202;
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .takeaway-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .takeaway-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #333;
+        }
+        
+        .takeaway-card p {
+            color: #666;
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        
+        .stat-item {
+            padding: 1rem;
+            min-width: 150px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #f9a202;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        .cta-container {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: #f9a202;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .cta-button:hover {
+            background-color: #f9a202;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .slide img {
+                height: 350px;
+            }
+            
+            .navigation-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .prev {
+                left: 10px;
+            }
+            
+            .next {
+                right: 10px;
+            }
+            
+            .slide-caption h3 {
+                font-size: 1.2rem;
+            }
+            
+            .slide-caption p {
+                font-size: 0.9rem;
+            }
+            
+            .highlights-intro h3 {
+                font-size: 1.5rem;
+            }
+            
+            .takeaway-card {
+                padding: 1.2rem;
+            }
+            
+            .takeaway-card h4 {
+                font-size: 1.1rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .slide img {
+                height: 250px;
+            }
+            
+            .navigation-arrow {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .slide-caption h3 {
+                font-size: 1rem;
+            }
+            
+            .slide-caption p {
+                font-size: 0.8rem;
+            }
+            
+            .highlights-intro h3 {
+                font-size: 1.3rem;
+            }
+            
+            .takeaway-card h4 {
+                font-size: 1rem;
+            }
+            
+            .stat-number {
+                font-size: 1.8rem;
+            }
+            
+            .stat-label {
+                font-size: 0.9rem;
+            }
+        }.container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: #ffffff;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #f9a202;
+        }
+        
+        .slider-container {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .slide {
+            min-width: 100%;
+            position: relative;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 1rem;
+        }
+        
+        .slide-caption h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .navigation-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #ffffff;
+            border: none;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        
+        .navigation-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .prev {
+            left: 20px;
+        }
+        
+        .next {
+            right: 20px;
+        }
+        
+        /* Dots navigation */
+        .dots-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            background-color: #444;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .dot.active {
+            background-color: #f9a202;
+        }
+        
+        /* Event Highlights Section */
+        .event-highlights {
+            margin-top: 3rem;
+            padding: 2rem;
+            background-color: #111111;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .highlights-intro {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .highlights-intro h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+        
+        .highlights-intro p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #b0b0b0;
+        }
+        
+        .key-takeaways {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .takeaway-card {
+            background-color: #1a1a1a;
+            border-left: 4px solid #f9a202;
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .takeaway-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(255, 87, 34, 0.2);
+        }
+        
+        .takeaway-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #ffffff;
+        }
+        
+        .takeaway-card p {
+            color: #b0b0b0;
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        
+        .stat-item {
+            padding: 1rem;
+            min-width: 150px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #f9a202;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: #b0b0b0;
+        }
+        
+        .cta-container {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: #f9a202;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .cta-button:hover {
+            background-color: #e64a19;
+            box-shadow: 0 0 15px rgba(255, 87, 34, 0.5);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .slide img {
+                height: 350px;
+            }
+            
+            .navigation-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .prev {
+                left: 10px;
+            }
+            
+            .next {
+                right: 10px;
+            }
+            
+            .slide-caption h3 {
+                font-size: 1.2rem;
+            }
+            
+            .slide-caption p {
+                font-size: 0.9rem;
+            }
+            
+            .highlights-intro h3 {
+                font-size: 1.5rem;
+            }
+            
+            .takeaway-card {
+                padding: 1.2rem;
+            }
+            
+            .takeaway-card h4 {
+                font-size: 1.1rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .slide img {
+                height: 250px;
+            }
+            
+            .navigation-arrow {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .slide-caption h3 {
+                font-size: 1rem;
+            }
+            
+            .slide-caption p {
+                font-size: 0.8rem;
+            }
+            
+            .highlights-intro h3 {
+                font-size: 1.3rem;
+            }
+            
+            .takeaway-card h4 {
+                font-size: 1rem;
+            }
+            
+            .stat-number {
+                font-size: 1.8rem;
+            }
+            
+            .stat-label {
+                font-size: 0.9rem;
+            }
+        }
+</style>
+
 <body>
 	<div class="page-wrap">
 		<div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
@@ -250,15 +861,13 @@
                         <img src="./assets/images/logos/afrika-3.png" alt="Event Image" class="event-image">
                     </div>
                     <div class="e-col-lg-6">
-                        <h5 class="text-center">iGaming Afrika 2 Years Anniversary</h5>
+                        <h5 class="text-center">iGaming Afrika - 2026 Chapter</h5>
                         <div id="countdown-timer"></div>
                         <div class="event-description text-center">
-                            Cheers to 2 Years of Excellence in Gaming News, Media and Content Publication! Happy Anniversary to iGaming AFRIKA -
-                            your leading source for casino, sportsbook, and lottery news across Africa! Join us as we celebrate two remarkable years of
-                            delivering top-notch insights and updates in the gaming industry.
+                            As your go-to source for casino, sportsbook, and lottery news in Africa, we are looking forward to mark this milestone with unwavering commitment to high-quality reporting, expert analysis, and industry impact. Join us as we highlight the progress, partnerships, and innovations that define the spirit of iGaming Afrika.
                         </div>
                         <div class="event-location text-center"  style="margin: 20px 0px;">
-                            <i class="fa fa-calendar" style="color: #f9a202;padding-right: 7px;"></i> Date: 19th April 2025
+                            <i class="fa fa-calendar" style="color: #f9a202;padding-right: 7px;"></i> Date: 27th - 31st July, 2026
                         </div>
                         <div class="event-location text-center"  style="margin: 20px 0px;">
                             <i class="fa fa-map-marker-alt" style="color: #f9a202;padding-right: 7px;"></i> Location: Ibis Styles, Westlands, Nairobi
@@ -273,6 +882,210 @@
 
 
         <div class="section-separator"></div>
+
+        
+        <div class="container">
+            <h2 class="section-title">Previous Events Highlights</h2>
+            
+            <div class="slider-container">
+                <div class="slider">
+                    <div class="slide">
+                        <img src="assets//images/previous002.jpg" alt="Anniversary Celebration">
+                        <div class="slide-caption">
+                            <h3>2-Year Anniversary Kickoff</h3>
+                            <p>We opened the celebration by reflecting on two years of impactful gaming news and media coverage across Africa.</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="assets/images/previous003.jpg" alt="Milestone Highlights">
+                        <div class="slide-caption">
+                            <h3>Milestones & Achievements</h3>
+                            <p>Showcasing key accomplishments, partnerships, and the growth of iGaming AFRIKA over the past two years.</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="assets/images/previous004.jpg" alt="Networking Celebration">
+                        <div class="slide-caption">
+                            <h3>Community & Networking</h3>
+                            <p>Bringing together contributors, readers, and industry professionals to celebrate the journey and future ahead.</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="assets/images/previous5.jpg" alt="Anniversary Awards">
+                        <div class="slide-caption">
+                            <h3>Anniversary Recognition</h3>
+                            <p>A special moment to honor individuals and partners who played a vital role in our two-year journey.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <button class="navigation-arrow prev">&#10094;</button>
+                <button class="navigation-arrow next">&#10095;</button>
+            </div>
+            
+            <div class="dots-container"></div>
+            
+            <!-- Event Highlights and Key Takeaways Section -->
+            <section class="event-highlights">
+                <div class="highlights-intro">
+                    <h3>iGaming Afrika 2 Years Anniversary Highlights</h3>
+                    <p>We proudly celebrated two years of delivering premier gaming news, media, and content across Africa. This milestone event honored the journey of iGaming Afrika and its growing impact on the casino, sportsbook, and lottery sectors throughout the continent.</p>
+                </div>
+                
+                <div class="key-takeaways">
+                    <div class="takeaway-card">
+                        <h4>Milestone Reflections</h4>
+                        <p>Speakers revisited iGaming Afrika’s journey from inception to becoming a trusted source for gaming insights, celebrating editorial milestones, audience growth, and industry influence.</p>
+                    </div>
+                    
+                    <div class="takeaway-card">
+                        <h4>Regional Industry Insights</h4>
+                        <p>Experts discussed the evolution of iGaming across key African markets, highlighting trends in regulation, market penetration, and the digital transformation shaping the future.</p>
+                    </div>
+                    
+                    <div class="takeaway-card">
+                        <h4>Celebrating Community & Partnerships</h4>
+                        <p>The anniversary brought together content creators, gaming operators, tech leaders, and media partners to celebrate collaborative efforts and shared achievements in the industry.</p>
+                    </div>
+                    
+                    <div class="takeaway-card">
+                        <h4>Looking Ahead</h4>
+                        <p>Panelists explored the next phase for iGaming Afrika, including expansion plans, new content formats, and initiatives aimed at fostering innovation and transparency in gaming journalism.</p>
+                    </div>
+                </div>
+                
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">Years of Impact</div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-number">100K+</div>
+                        <div class="stat-label">Monthly Readers</div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">Industry Partners</div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Community Satisfaction</div>
+                    </div>
+                </div>
+                
+                <!-- <div class="cta-container">
+                    <a href="#" class="cta-button">Join Our Community</a>
+                </div> -->
+            </section>
+            
+        </div>
+    
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const slider = document.querySelector('.slider');
+                const slides = document.querySelectorAll('.slide');
+                const prevBtn = document.querySelector('.prev');
+                const nextBtn = document.querySelector('.next');
+                const dotsContainer = document.querySelector('.dots-container');
+                
+                let currentIndex = 0;
+                const slideCount = slides.length;
+                
+                // Create dots for navigation
+                slides.forEach((_, index) => {
+                    const dot = document.createElement('div');
+                    dot.classList.add('dot');
+                    if (index === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => goToSlide(index));
+                    dotsContainer.appendChild(dot);
+                });
+                
+                const dots = document.querySelectorAll('.dot');
+                
+                // Initialize slider
+                updateSlider();
+                
+                // Event listeners for navigation
+                prevBtn.addEventListener('click', prevSlide);
+                nextBtn.addEventListener('click', nextSlide);
+                
+                // Add touch swipe functionality
+                let touchStartX = 0;
+                let touchEndX = 0;
+                
+                slider.addEventListener('touchstart', e => {
+                    touchStartX = e.changedTouches[0].screenX;
+                });
+                
+                slider.addEventListener('touchend', e => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                });
+                
+                function handleSwipe() {
+                    const swipeThreshold = 50;
+                    if (touchEndX < touchStartX - swipeThreshold) {
+                        // Swipe left
+                        nextSlide();
+                    } else if (touchEndX > touchStartX + swipeThreshold) {
+                        // Swipe right
+                        prevSlide();
+                    }
+                }
+                
+                // Auto slide functionality
+                let autoSlideInterval = setInterval(nextSlide, 5000);
+                
+                // Pause auto slide on hover
+                slider.addEventListener('mouseenter', () => {
+                    clearInterval(autoSlideInterval);
+                });
+                
+                slider.addEventListener('mouseleave', () => {
+                    autoSlideInterval = setInterval(nextSlide, 5000);
+                });
+                
+                // Navigation functions
+                function prevSlide() {
+                    currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+                    updateSlider();
+                }
+                
+                function nextSlide() {
+                    currentIndex = (currentIndex + 1) % slideCount;
+                    updateSlider();
+                }
+                
+                function goToSlide(index) {
+                    currentIndex = index;
+                    updateSlider();
+                }
+                
+                function updateSlider() {
+                    // Update slider position
+                    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+                    
+                    // Update active dot
+                    dots.forEach((dot, index) => {
+                        if (index === currentIndex) {
+                            dot.classList.add('active');
+                        } else {
+                            dot.classList.remove('active');
+                        }
+                    });
+                }
+                
+                // Handle window resize for responsiveness
+                window.addEventListener('resize', () => {
+                    updateSlider();
+                });
+            });
+        </script>
+
 		
 		<section class="footer">
 			<div class="w-layout-blockcontainer container w-container">
@@ -299,7 +1112,7 @@
         
     <script>
         function updateCountdown() {
-            const targetDate = new Date("April 19, 2025 00:00:00").getTime();
+            const targetDate = new Date("July 27, 2026 00:00:00").getTime();
             const now = new Date().getTime();
             const timeRemaining = targetDate - now;
 
